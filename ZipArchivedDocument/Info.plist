@@ -33,7 +33,7 @@
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconText</key>
-				<string>arcodc</string>
+				<string>arcdoc</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>jp.usagimaru.archiveddocumentexample</string>
@@ -46,6 +46,5 @@
 			</dict>
 		</dict>
 	</array>
-	
 </dict>
 </plist>
