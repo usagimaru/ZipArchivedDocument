@@ -26,7 +26,7 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>public.data</string>
+				<string>com.pkware.zip-archive</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>The Archived Document</string>
