@@ -1,7 +1,7 @@
 # ZipArchivedDocument
-The sample implementation of zip-archived document for a macOS AppKit platform. You can implement NSDocument-based I/O of archived document in your application like `.sketch` or `.key`.
+The sample implementation of a zip-archived document for macOS AppKit platform. You can implement NSDocument-based document archiving and unarchiving processes in your application like `.sketch` and `.key` file formats.
 
-The `.arcdoc` document file defined in this sample is zip archived and can be unzipped on the Finder by adding `.zip` to the extension.
+The `.arcdoc` document file format defined in this sample project will be archive to zip and can be unzipped on the Finder by adding `.zip` extension.
 
 
 <img src="./image.jpg" width=391 alt=".arcdoc file and unzipped document.">
