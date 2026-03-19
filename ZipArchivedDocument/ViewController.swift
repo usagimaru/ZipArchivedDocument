@@ -9,10 +9,24 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+	private lazy var markChangeButton: NSButton = {
+		let button = NSButton(
+			title: String(localized: "Mark as Changed"),
+			target: self,
+			action: #selector(markDocumentChanged(_:))
+		)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+	}()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// Do any additional setup after loading the view.
+		view.addSubview(markChangeButton)
+		NSLayoutConstraint.activate([
+			markChangeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			markChangeButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+		])
 	}
 
 	override var representedObject: Any? {
@@ -21,6 +35,27 @@ class ViewController: NSViewController {
 		}
 	}
 
+	// MARK: - Actions
+
+	// 明示的なオートセーブを実行
+	// オートセーブ先は document.autosavedContentsFileURL で取得可能
+	@objc private func markDocumentChanged(_ sender: Any?) {
+		guard let document = view.window?.windowController?.document as? Document else {
+			return
+		}
+		document.updateChangeCount(.changeDone)
+		print("updateChangeCount(.changeDone)")
+		document.autosave(withImplicitCancellability: false) { error in
+			if let error {
+				print("Autosave failed: \(error)")
+				return
+			}
+			print("Autosave succeeded")
+			if let url = document.autosavedContentsFileURL {
+				print("  \(String(describing: url.absoluteString))")
+			}
+		}
+	}
 
 }
 

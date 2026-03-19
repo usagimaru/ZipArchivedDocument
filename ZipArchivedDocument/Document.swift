@@ -122,6 +122,9 @@ class Document: NSDocument {
 			try? FileManager.default.removeItem(at: tempZipURL)
 		}
 		
+		Swift.print("Temp directory: \(tempDirURL)")
+		Swift.print("Temp zip: \(tempZipURL)")
+		
 		// Prepare the document file wrapper (document contents)
 		let documentFileWrapper = prepareFileWrapperToSave()
 		
@@ -146,10 +149,6 @@ class Document: NSDocument {
 	
 	/// Write the document to data
 	override func data(ofType typeName: String) throws -> Data {
-		// Insert code here to write your document to data of the specified type, throwing an error in case of failure.
-		// Alternatively, you could remove this method and override fileWrapper(ofType:), write(to:ofType:), or write(to:ofType:for:originalContentsURL:) instead.
-		//throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-		
 		switch typeName {
 			case DocumentInfo.documentUTI:
 				do {
